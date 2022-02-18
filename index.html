@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FructCode VueJS</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <div class="main">
+            <ul class="cards">
+                <!-- динамический класс -->
+                <li class="cards_item" v-for="item in cards" :class="{fav:item.isFav}">
+                    <div class="card">
+                       
+                        <div class="card_image"><img v-bind:src="img"></div>
+                        <div class="card_content">
+                            <h2 class="card_title">{{item.title}}</h2>
+                           <ul class="info-list">
+                               <li class="info-li"  v-for="itemList in item.list">{{ itemList.title }}</li>
+                           </ul>
+                            <a v-bind:href="item.link" class="btn" @click="isOpenFunction(item)">{{ btn.title }}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--------------->
+  
+    <!--------------->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+    </body>
+    </html>

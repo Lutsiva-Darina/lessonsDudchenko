@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="lesson">
+        <div class="main">
+            <div class="container" v-for="lesson in lessons" v-bind:class="{visible: lesson.isVisible}"  @click="isLesson(lesson)">
+                <h1>{{title}} {{lesson.number}}</h1>
+                <div class="video-container" v-for="video in lesson.video">
+                    <h3 class="text-header">{{video.title}}</h3>
+                <video controls="controls" v-bind:poster="lesson.poster">
+                    <source v-bind:src="video.path" type='video/mp4;'>
+                </video>
+                <div class="container-text">
+                    <h3 class="text-header">{{video.headerText}}</h3>
+                    <ul class="lesson-list">
+                        <li class="list_item info-li" v-for="item in video.listLesson">{{ item.title }}</li>
+                    </ul>
+                </div>
+                </div>
+                <h2 class="text-header">Практика</h2>
+                <div class="container-practica">
+                    <div class="video-container" v-for="practicaVideo in lesson.practica">
+                        <h3 class="text-header">{{practicaVideo.title}}</h3>
+                        <div class="video-text-container">
+                             <video controls="controls" v-bind:poster="lesson.poster">
+                                <source v-bind:src="practicaVideo.path" type='video/mp4;'>
+                            </video>
+                            <ul class="video-text">
+                                <li class="list_item" v-for="videolist in practicaVideo.videolist">{{videolist.title}}</li>
+                            </ul>
+                        </div>
+                   
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="lesson.js"></script>
+</body>
+</html>
